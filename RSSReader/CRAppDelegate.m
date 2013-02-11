@@ -7,27 +7,19 @@
 //
 
 #import "CRAppDelegate.h"
-
+#import <CoreData/CoreData.h>
 #import "CRViewController.h"
+#import "CRHistoryViewController.h"
 
 @implementation CRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    self.tabBarController = [[UITabBarController alloc] init];
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    CRViewController *v1 = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:nil];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:v1];
-    [viewControllers addObject:self.navigationController];
-    
-    CRViewController *v2 = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:[NSBundle mainBundle]];
-    [viewControllers addObject:v2];
-    
-    self.tabBarController.viewControllers = viewControllers;
+    [self initTabBarController];
     
     self.window.rootViewController = self.tabBarController;
 
@@ -35,6 +27,21 @@
 
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)initTabBarController {
+    self.tabBarController = [[UITabBarController alloc] init];
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+    
+    CRViewController *mainViewController = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:nil];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    [viewControllers addObject:self.navigationController];
+    
+    CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:[NSBundle mainBundle]];
+    historyViewController.title = @"History";
+    [viewControllers addObject:historyViewController];
+    
+    self.tabBarController.viewControllers = viewControllers;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -64,4 +71,47 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+#pragma mark core data methods
+
+- (NSManagedObjectContext *) managedObjectContext {
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
+    }
+    
+    return _managedObjectContext;
+}
+
+- (NSManagedObjectModel *)managedObjectModel {
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
+    }
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    
+    return _managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
+    }
+    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
+                                               stringByAppendingPathComponent: @"<Project Name>.sqlite"]];
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+                                  initWithManagedObjectModel:[self managedObjectModel]];
+    if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                 configuration:nil URL:storeUrl options:nil error:&error]) {
+        /*Error for store creation should be handled in here*/
+    }
+    
+    return _persistentStoreCoordinator;
+}
+
+#pragma end
 @end
