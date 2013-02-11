@@ -12,9 +12,9 @@
 
 @interface CacheArticle : NSManagedObject
 
+@property (nonatomic, retain) NSString * articleContent;
 @property (nonatomic, retain) NSString * articleTitle;
 @property (nonatomic, retain) NSString * articleURL;
-@property (nonatomic, retain) NSString * articleContent;
-@property (nonatomic, retain) NSString * articleTime;
+@property (nonatomic, retain) NSDate * timeStamp;
 
 @end

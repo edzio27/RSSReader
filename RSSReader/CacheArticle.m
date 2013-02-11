@@ -11,9 +11,9 @@
 
 @implementation CacheArticle
 
+@dynamic articleContent;
 @dynamic articleTitle;
 @dynamic articleURL;
-@dynamic articleContent;
-@dynamic articleTime;
+@dynamic timeStamp;
 
 @end

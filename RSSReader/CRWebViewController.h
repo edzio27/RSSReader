@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class CacheArticle;
+
 @interface CRWebViewController : UIViewController <UIWebViewDelegate>
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil url:(NSURL *)url;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil url:(NSString *)url;
 
 @end

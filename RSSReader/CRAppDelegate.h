@@ -24,6 +24,6 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-- (NSString *)applicationDocumentsDirectory;
+- (NSURL *)applicationDocumentsDirectory;
 
 @end

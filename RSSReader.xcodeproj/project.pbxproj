@@ -26,11 +26,11 @@
 		DB7E5F4A16C71887009777F2 /* CRWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7E5F4816C71887009777F2 /* CRWebViewController.xib */; };
 		DB7E5F4E16C71B6C009777F2 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E5F4D16C71B6C009777F2 /* LoadingView.m */; };
 		DB7E5F5016C71C31009777F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7E5F4F16C71C31009777F2 /* QuartzCore.framework */; };
+		DB814B2C16C97299006AF59C /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB814B2B16C97299006AF59C /* CacheArticle.m */; };
 		DB85294C16C91BCC000ADDB9 /* CRHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */; };
 		DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */; };
 		DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB85295216C921B1000ADDB9 /* CoreData.framework */; };
 		DB85296316C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB85296116C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld */; };
-		DB85296616C92C57000ADDB9 /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85296516C92C57000ADDB9 /* CacheArticle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,13 +62,13 @@
 		DB7E5F4C16C71B6C009777F2 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		DB7E5F4D16C71B6C009777F2 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		DB7E5F4F16C71C31009777F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DB814B2A16C97299006AF59C /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
+		DB814B2B16C97299006AF59C /* CacheArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheArticle.m; sourceTree = "<group>"; };
 		DB85294916C91BCC000ADDB9 /* CRHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRHistoryViewController.h; sourceTree = "<group>"; };
 		DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRHistoryViewController.m; sourceTree = "<group>"; };
 		DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRHistoryViewController.xib; sourceTree = "<group>"; };
 		DB85295216C921B1000ADDB9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB85296216C92BF8000ADDB9 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		DB85296416C92C57000ADDB9 /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
-		DB85296516C92C57000ADDB9 /* CacheArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheArticle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,9 +185,9 @@
 		DB85295416C92515000ADDB9 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				DB814B2A16C97299006AF59C /* CacheArticle.h */,
+				DB814B2B16C97299006AF59C /* CacheArticle.m */,
 				DB85296116C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld */,
-				DB85296416C92C57000ADDB9 /* CacheArticle.h */,
-				DB85296516C92C57000ADDB9 /* CacheArticle.m */,
 			);
 			name = CoreDataModel;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 				DB7E5F4E16C71B6C009777F2 /* LoadingView.m in Sources */,
 				DB85294C16C91BCC000ADDB9 /* CRHistoryViewController.m in Sources */,
 				DB85296316C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld in Sources */,
-				DB85296616C92C57000ADDB9 /* CacheArticle.m in Sources */,
+				DB814B2C16C97299006AF59C /* CacheArticle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

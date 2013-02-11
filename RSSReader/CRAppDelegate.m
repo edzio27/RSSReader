@@ -30,6 +30,7 @@
     NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
     
     CRViewController *mainViewController = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:nil];
+    mainViewController.title = @"Main";
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     [viewControllers addObject:self.navigationController];
     
@@ -98,7 +99,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"database.sqlite"]];
+    NSURL *storeUrl = [[self applicationDocumentsDirectory] URLByAppendingPathComponent: @"rssDatabase.sqlite"];
     
     NSError *error = nil;
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -112,9 +113,9 @@
     return _persistentStoreCoordinator;
 }
 
-- (NSString *)applicationDocumentsDirectory
+- (NSURL *)applicationDocumentsDirectory
 {
-    return [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] absoluteString];
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 #pragma end
