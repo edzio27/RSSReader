@@ -15,9 +15,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.viewController = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:nil];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-    self.window.rootViewController = self.navigationController;
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
+    CRViewController *v1 = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:nil];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:v1];
+    [viewControllers addObject:self.navigationController];
+    
+    CRViewController *v2 = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:[NSBundle mainBundle]];
+    [viewControllers addObject:v2];
+    
+    self.tabBarController.viewControllers = viewControllers;
+    
+    self.window.rootViewController = self.tabBarController;
+
+    
+
     [self.window makeKeyAndVisible];
     return YES;
 }
