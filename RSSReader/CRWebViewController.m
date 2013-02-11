@@ -8,12 +8,17 @@
 
 #import "CRWebViewController.h"
 #import "LoadingView.h"
+#import <CoreData/CoreData.h>
+#import "CRAppDelegate.h"
 
 @interface CRWebViewController ()
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) LoadingView *loadingView;
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @end
 
@@ -27,6 +32,35 @@
         // Custom initialization
     }
     return self;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    if(_managedObjectContext == nil) {
+        CRAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        _managedObjectContext = appDelegate.managedObjectContext;
+    }
+    return _managedObjectContext;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if(_persistentStoreCoordinator == nil) {
+        CRAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        _persistentStoreCoordinator = appDelegate.persistentStoreCoordinator;
+    }
+    return _persistentStoreCoordinator;
+}
+
+- (void)cachedWebArticle {
+    NSManagedObject *failedBankInfo = [NSEntityDescription
+                                       insertNewObjectForEntityForName:@"CacheArticle"
+                                       inManagedObjectContext:self.managedObjectContext];
+    [failedBankInfo setValue:@"title!!" forKey:@"articleTitle"];
+    [failedBankInfo setValue:@"siemka" forKey:@"articleURL"];
+    [failedBankInfo setValue:@"12231234" forKey:@"articleTime"];
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
 }
 
 - (void)viewDidLoad
@@ -50,6 +84,7 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.loadingView removeView];
+    [self cachedWebArticle];
 }
 
 @end

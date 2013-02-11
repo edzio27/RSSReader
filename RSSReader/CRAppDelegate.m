@@ -16,15 +16,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
     [self initTabBarController];
-    
+
     self.window.rootViewController = self.tabBarController;
-
-    
-
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -97,21 +93,30 @@
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-                                               stringByAppendingPathComponent: @"<Project Name>.sqlite"]];
+    
+    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"database.sqlite"]];
+    
     NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
-                                  initWithManagedObjectModel:[self managedObjectModel]];
-    if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                 configuration:nil URL:storeUrl options:nil error:&error]) {
-        /*Error for store creation should be handled in here*/
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+    						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+    						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&error]) {
+        // Handle error
     }
     
     return _persistentStoreCoordinator;
 }
 
+- (NSString *)applicationDocumentsDirectory
+{
+    return [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] absoluteString];
+}
+
 #pragma end
+
 @end
