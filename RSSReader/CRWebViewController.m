@@ -80,6 +80,12 @@
     return [self.cacheArticle.articleToRead isEqualToString:@"1"] ? self.removeToReadbuttonItem : self.addToReadbuttonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if(!self.isThereInternetConnection) {
+        [self.noInternetConnection show];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

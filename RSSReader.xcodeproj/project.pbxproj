@@ -28,6 +28,8 @@
 		DB7C9DC616CAD2F900916E37 /* CRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DC516CAD2F900916E37 /* CRBaseViewController.m */; };
 		DB7C9DCA16CAE12E00916E37 /* CRToReadArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DC816CAE12E00916E37 /* CRToReadArticleViewController.m */; };
 		DB7C9DCB16CAE12E00916E37 /* CRToReadArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7C9DC916CAE12E00916E37 /* CRToReadArticleViewController.xib */; };
+		DB7C9DCE16CAEF4C00916E37 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DCD16CAEF4C00916E37 /* Reachability.m */; };
+		DB7C9DD016CAEFC400916E37 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7C9DCF16CAEFC400916E37 /* SystemConfiguration.framework */; };
 		DB7E5F4916C71887009777F2 /* CRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E5F4716C71887009777F2 /* CRWebViewController.m */; };
 		DB7E5F4A16C71887009777F2 /* CRWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7E5F4816C71887009777F2 /* CRWebViewController.xib */; };
 		DB7E5F4E16C71B6C009777F2 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E5F4D16C71B6C009777F2 /* LoadingView.m */; };
@@ -70,6 +72,9 @@
 		DB7C9DC716CAE12E00916E37 /* CRToReadArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToReadArticleViewController.h; sourceTree = "<group>"; };
 		DB7C9DC816CAE12E00916E37 /* CRToReadArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRToReadArticleViewController.m; sourceTree = "<group>"; };
 		DB7C9DC916CAE12E00916E37 /* CRToReadArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRToReadArticleViewController.xib; sourceTree = "<group>"; };
+		DB7C9DCC16CAEF4C00916E37 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DB7C9DCD16CAEF4C00916E37 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DB7C9DCF16CAEFC400916E37 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DB7E5F4616C71887009777F2 /* CRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRWebViewController.h; sourceTree = "<group>"; };
 		DB7E5F4716C71887009777F2 /* CRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRWebViewController.m; sourceTree = "<group>"; };
 		DB7E5F4816C71887009777F2 /* CRWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRWebViewController.xib; sourceTree = "<group>"; };
@@ -88,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB7C9DD016CAEFC400916E37 /* SystemConfiguration.framework in Frameworks */,
 				DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */,
 				DB7E5F5016C71C31009777F2 /* QuartzCore.framework in Frameworks */,
 				DB4AFDF216C6E2F00051F7D7 /* UIKit.framework in Frameworks */,
@@ -102,6 +108,7 @@
 		DB4AFDE216C6E2F00051F7D7 = {
 			isa = PBXGroup;
 			children = (
+				DB7C9DCF16CAEFC400916E37 /* SystemConfiguration.framework */,
 				DB85295216C921B1000ADDB9 /* CoreData.framework */,
 				DB7E5F4F16C71C31009777F2 /* QuartzCore.framework */,
 				DB4AFDF716C6E2F00051F7D7 /* RSSReader */,
@@ -158,6 +165,8 @@
 		DB4AFE1716C6E36B0051F7D7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DB7C9DCC16CAEF4C00916E37 /* Reachability.h */,
+				DB7C9DCD16CAEF4C00916E37 /* Reachability.m */,
 				DB7E5F4C16C71B6C009777F2 /* LoadingView.h */,
 				DB7E5F4D16C71B6C009777F2 /* LoadingView.m */,
 				DB4AFE1816C6E37A0051F7D7 /* KMXMLParser.h */,
@@ -305,6 +314,7 @@
 				DB7C9DC316CACD8B00916E37 /* CacheArticle.m in Sources */,
 				DB7C9DC616CAD2F900916E37 /* CRBaseViewController.m in Sources */,
 				DB7C9DCA16CAE12E00916E37 /* CRToReadArticleViewController.m in Sources */,
+				DB7C9DCE16CAEF4C00916E37 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

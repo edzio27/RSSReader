@@ -38,12 +38,18 @@
     return _parseResult;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if(!self.isThereInternetConnection) {
+        [self.noInternetConnection show];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
     self.parseResult = parser.posts;
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning

@@ -83,7 +83,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CRWebViewController *webViewController = [[CRWebViewController alloc] initWithNibName:@"CRWebViewController" bundle:[NSBundle mainBundle] chacheArticle:[self.fetchedArray objectAtIndex:indexPath.row]];
+    NSLog(@"object %@", [self.fetchedArray objectAtIndex:indexPath.row]);
+    CRWebViewController *webViewController = [[CRWebViewController alloc] initWithNibName:@"CRWebViewController" bundle:nil chacheArticle:[self.fetchedArray objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 

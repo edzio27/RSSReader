@@ -35,11 +35,12 @@
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     [viewControllers addObject:self.navigationController];
     
-    CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:[NSBundle mainBundle]];
+    CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:nil];
     historyViewController.title = @"History";
     [viewControllers addObject:historyViewController];
     
-    CRToReadArticleViewController *toReadArticleViewController = [[CRToReadArticleViewController alloc]initWithNibName:@"CRToReadArticleViewController" bundle:[NSBundle mainBundle]];
+    CRToReadArticleViewController *toReadArticleViewController = [[CRToReadArticleViewController alloc]initWithNibName:@"CRToReadArticleViewController" bundle:nil
+                                                                  ];
     toReadArticleViewController.title = @"To read";
     [viewControllers addObject:toReadArticleViewController];
     
