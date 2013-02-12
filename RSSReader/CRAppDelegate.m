@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "CRViewController.h"
 #import "CRHistoryViewController.h"
+#import "CRToReadArticleViewController.h"
 
 @implementation CRAppDelegate
 
@@ -37,6 +38,10 @@
     CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:[NSBundle mainBundle]];
     historyViewController.title = @"History";
     [viewControllers addObject:historyViewController];
+    
+    CRToReadArticleViewController *toReadArticleViewController = [[CRToReadArticleViewController alloc]initWithNibName:@"CRToReadArticleViewController" bundle:[NSBundle mainBundle]];
+    toReadArticleViewController.title = @"To read";
+    [viewControllers addObject:toReadArticleViewController];
     
     self.tabBarController.viewControllers = viewControllers;
 }
