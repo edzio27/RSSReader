@@ -17,7 +17,6 @@
 
 @property (nonatomic, strong) NSMutableArray *parseResult;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
 
@@ -30,14 +29,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if(_managedObjectContext == nil) {
-        CRAppDelegate *appDelegate = (CRAppDelegate *)[[UIApplication sharedApplication] delegate];
-        _managedObjectContext = appDelegate.managedObjectContext;
-    }
-    return _managedObjectContext;
 }
 
 - (NSMutableArray *)parseResult {
@@ -92,24 +83,38 @@
     NSString *url = [[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"] substringWithRange:NSMakeRange(0, right)];
     url = [url stringByReplacingOccurrencesOfString: @"\n\t\t" withString: @""];
     
-    CacheArticle *cachedArticle = [NSEntityDescription
-                                   insertNewObjectForEntityForName:@"CacheArticle"
-                                   inManagedObjectContext:self.managedObjectContext];
-    [cachedArticle setValue:url forKey:@"articleURL"];
-    [cachedArticle setValue:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"title"] forKey:@"articleTitle"];
-    [cachedArticle setValue:[NSDate date] forKey:@"timeStamp"];
-    [cachedArticle setValue:@"" forKey:@"articleContent"];
+    CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:url];
+    if(!cacheArticle) {
+        cacheArticle = [NSEntityDescription
+                                       insertNewObjectForEntityForName:@"CacheArticle"
+                                       inManagedObjectContext:self.managedObjectContext];
+        [cacheArticle setValue:url forKey:@"articleURL"];
+        [cacheArticle setValue:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"title"] forKey:@"articleTitle"];
+        [cacheArticle setValue:[NSDate date] forKey:@"timeStamp"];
+        [cacheArticle setValue:@"" forKey:@"articleContent"];
+    }
     
     NSError *error;
     if(![self.managedObjectContext save:&error]) {
         NSLog(@"Error");
     }
-    NSLog(@"url %@", url);
-    CRWebViewController *webViewController = [[CRWebViewController alloc] initWithNibName:@"CRWebViewController" bundle:[NSBundle mainBundle] url:url];
+    CRWebViewController *webViewController = [[CRWebViewController alloc] initWithNibName:@"CRWebViewController" bundle:[NSBundle mainBundle] chacheArticle:cacheArticle];
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 #pragma end
 
+- (CacheArticle *)arrayItemsInCoreDataWithUrl:(NSString *)url {
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CacheArticle" inManagedObjectContext:self.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"articleURL = %@", url];
+    [request setEntity:entity];
+    [request setPredicate:predicate];
+
+    NSError *error;
+    NSArray *array = [self.managedObjectContext executeFetchRequest:request error:&error];
+    return array.count == 0 ? nil : [array objectAtIndex:0];
+}
 
 @end

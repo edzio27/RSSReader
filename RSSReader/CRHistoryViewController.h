@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRBaseViewController.h"
 
-@interface CRHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CRHistoryViewController : CRBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

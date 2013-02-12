@@ -22,11 +22,14 @@
 		DB4AFE1A16C6E37A0051F7D7 /* KMXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4AFE1916C6E37A0051F7D7 /* KMXMLParser.m */; };
 		DB4AFE2016C6E3EC0051F7D7 /* CRRSSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4AFE1E16C6E3EC0051F7D7 /* CRRSSListViewController.m */; };
 		DB4AFE2116C6E3EC0051F7D7 /* CRRSSListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4AFE1F16C6E3EC0051F7D7 /* CRRSSListViewController.xib */; };
+		DB7C9DBF16CACCA400916E37 /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7C9DBD16CACCA400916E37 /* edit@2x.png */; };
+		DB7C9DC016CACCA400916E37 /* edit_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7C9DBE16CACCA400916E37 /* edit_active@2x.png */; };
+		DB7C9DC316CACD8B00916E37 /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DC216CACD8B00916E37 /* CacheArticle.m */; };
+		DB7C9DC616CAD2F900916E37 /* CRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DC516CAD2F900916E37 /* CRBaseViewController.m */; };
 		DB7E5F4916C71887009777F2 /* CRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E5F4716C71887009777F2 /* CRWebViewController.m */; };
 		DB7E5F4A16C71887009777F2 /* CRWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7E5F4816C71887009777F2 /* CRWebViewController.xib */; };
 		DB7E5F4E16C71B6C009777F2 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E5F4D16C71B6C009777F2 /* LoadingView.m */; };
 		DB7E5F5016C71C31009777F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7E5F4F16C71C31009777F2 /* QuartzCore.framework */; };
-		DB814B2C16C97299006AF59C /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB814B2B16C97299006AF59C /* CacheArticle.m */; };
 		DB85294C16C91BCC000ADDB9 /* CRHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */; };
 		DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */; };
 		DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB85295216C921B1000ADDB9 /* CoreData.framework */; };
@@ -56,14 +59,18 @@
 		DB4AFE1D16C6E3EC0051F7D7 /* CRRSSListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRSSListViewController.h; sourceTree = "<group>"; };
 		DB4AFE1E16C6E3EC0051F7D7 /* CRRSSListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRSSListViewController.m; sourceTree = "<group>"; };
 		DB4AFE1F16C6E3EC0051F7D7 /* CRRSSListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRRSSListViewController.xib; sourceTree = "<group>"; };
+		DB7C9DBD16CACCA400916E37 /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@2x.png"; sourceTree = "<group>"; };
+		DB7C9DBE16CACCA400916E37 /* edit_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_active@2x.png"; sourceTree = "<group>"; };
+		DB7C9DC116CACD8B00916E37 /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
+		DB7C9DC216CACD8B00916E37 /* CacheArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheArticle.m; sourceTree = "<group>"; };
+		DB7C9DC416CAD2F900916E37 /* CRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBaseViewController.h; sourceTree = "<group>"; };
+		DB7C9DC516CAD2F900916E37 /* CRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBaseViewController.m; sourceTree = "<group>"; };
 		DB7E5F4616C71887009777F2 /* CRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRWebViewController.h; sourceTree = "<group>"; };
 		DB7E5F4716C71887009777F2 /* CRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRWebViewController.m; sourceTree = "<group>"; };
 		DB7E5F4816C71887009777F2 /* CRWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRWebViewController.xib; sourceTree = "<group>"; };
 		DB7E5F4C16C71B6C009777F2 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		DB7E5F4D16C71B6C009777F2 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		DB7E5F4F16C71C31009777F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DB814B2A16C97299006AF59C /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
-		DB814B2B16C97299006AF59C /* CacheArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheArticle.m; sourceTree = "<group>"; };
 		DB85294916C91BCC000ADDB9 /* CRHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRHistoryViewController.h; sourceTree = "<group>"; };
 		DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRHistoryViewController.m; sourceTree = "<group>"; };
 		DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRHistoryViewController.xib; sourceTree = "<group>"; };
@@ -119,6 +126,7 @@
 		DB4AFDF716C6E2F00051F7D7 /* RSSReader */ = {
 			isa = PBXGroup;
 			children = (
+				DB7C9DBC16CACCA400916E37 /* Resources */,
 				DB85295416C92515000ADDB9 /* CoreDataModel */,
 				DB4AFE1C16C6E3950051F7D7 /* Views */,
 				DB4AFE1B16C6E3830051F7D7 /* Controlers */,
@@ -156,6 +164,8 @@
 		DB4AFE1B16C6E3830051F7D7 /* Controlers */ = {
 			isa = PBXGroup;
 			children = (
+				DB7C9DC416CAD2F900916E37 /* CRBaseViewController.h */,
+				DB7C9DC516CAD2F900916E37 /* CRBaseViewController.m */,
 				DB7E5F4616C71887009777F2 /* CRWebViewController.h */,
 				DB7E5F4716C71887009777F2 /* CRWebViewController.m */,
 				DB4AFE1D16C6E3EC0051F7D7 /* CRRSSListViewController.h */,
@@ -182,11 +192,20 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		DB7C9DBC16CACCA400916E37 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DB7C9DBD16CACCA400916E37 /* edit@2x.png */,
+				DB7C9DBE16CACCA400916E37 /* edit_active@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		DB85295416C92515000ADDB9 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
-				DB814B2A16C97299006AF59C /* CacheArticle.h */,
-				DB814B2B16C97299006AF59C /* CacheArticle.m */,
+				DB7C9DC116CACD8B00916E37 /* CacheArticle.h */,
+				DB7C9DC216CACD8B00916E37 /* CacheArticle.m */,
 				DB85296116C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld */,
 			);
 			name = CoreDataModel;
@@ -253,6 +272,8 @@
 				DB4AFE2116C6E3EC0051F7D7 /* CRRSSListViewController.xib in Resources */,
 				DB7E5F4A16C71887009777F2 /* CRWebViewController.xib in Resources */,
 				DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */,
+				DB7C9DBF16CACCA400916E37 /* edit@2x.png in Resources */,
+				DB7C9DC016CACCA400916E37 /* edit_active@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +293,8 @@
 				DB7E5F4E16C71B6C009777F2 /* LoadingView.m in Sources */,
 				DB85294C16C91BCC000ADDB9 /* CRHistoryViewController.m in Sources */,
 				DB85296316C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld in Sources */,
-				DB814B2C16C97299006AF59C /* CacheArticle.m in Sources */,
+				DB7C9DC316CACD8B00916E37 /* CacheArticle.m in Sources */,
+				DB7C9DC616CAD2F900916E37 /* CRBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRBaseViewController.h"
 
 @class CacheArticle;
 
-@interface CRWebViewController : UIViewController <UIWebViewDelegate>
+@interface CRWebViewController : CRBaseViewController <UIWebViewDelegate>
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil url:(NSString *)url;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil chacheArticle:(CacheArticle *)cacheArticle;
 
 @end

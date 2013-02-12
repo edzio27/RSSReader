@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *historyArray;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
 
@@ -45,14 +44,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if(_managedObjectContext == nil) {
-        CRAppDelegate *appDelegate = (CRAppDelegate *)[[UIApplication sharedApplication] delegate];
-        _managedObjectContext = appDelegate.managedObjectContext;
-    }
-    return _managedObjectContext;
 }
 
 - (NSMutableArray *)historyArray {

@@ -3,10 +3,11 @@
     <entity name="CacheArticle" representedClassName="CacheArticle" syncable="YES">
         <attribute name="articleContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleToRead" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CacheArticle" positionX="-45" positionY="-9" width="128" height="105"/>
+        <element name="CacheArticle" positionX="-45" positionY="-9" width="128" height="120"/>
     </elements>
 </model>
