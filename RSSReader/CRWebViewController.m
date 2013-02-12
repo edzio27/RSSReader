@@ -82,6 +82,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     if(!self.isThereInternetConnection) {
+        [self.loadingView removeView];
         [self.noInternetConnection show];
     }
 }
@@ -108,6 +109,14 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.loadingView removeView];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(alertView.tag == ALERTVIEW_ERROR_CONNECTION) {
+        if(buttonIndex == 0) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 @end

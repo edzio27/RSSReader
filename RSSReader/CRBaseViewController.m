@@ -34,6 +34,7 @@
 - (UIAlertView *)noInternetConnection {
     if(_noInternetConnection == nil) {
         _noInternetConnection = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        _noInternetConnection.tag = ALERTVIEW_ERROR_CONNECTION;
     }
     return _noInternetConnection;
 }

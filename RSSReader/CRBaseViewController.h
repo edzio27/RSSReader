@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
 
+#define ALERTVIEW_ERROR_CONNECTION 111
+
 @interface CRBaseViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;

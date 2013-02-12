@@ -17,8 +17,6 @@
 @property (strong, nonatomic) CRViewController *viewController;
 
 @property (strong, nonatomic) UINavigationController *navigationController;
-@property (strong, nonatomic) UINavigationController *historyNavigationController;
-@property (strong, nonatomic) UINavigationController *toReadNavigationController;
 
 @property (strong, nonatomic) UITabBarController *tabBarController;
 

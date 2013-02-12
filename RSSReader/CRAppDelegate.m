@@ -37,12 +37,13 @@
     
     CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:nil];
     historyViewController.title = @"History";
-    [viewControllers addObject:historyViewController];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:historyViewController];
+    [viewControllers addObject:self.navigationController];
     
-    CRToReadArticleViewController *toReadArticleViewController = [[CRToReadArticleViewController alloc]initWithNibName:@"CRToReadArticleViewController" bundle:nil
-                                                                  ];
+    CRToReadArticleViewController *toReadArticleViewController = [[CRToReadArticleViewController alloc]initWithNibName:@"CRToReadArticleViewController" bundle:nil];
     toReadArticleViewController.title = @"To read";
-    [viewControllers addObject:toReadArticleViewController];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:toReadArticleViewController];
+    [viewControllers addObject:self.navigationController];
     
     self.tabBarController.viewControllers = viewControllers;
 }
