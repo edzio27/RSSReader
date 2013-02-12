@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "CRAppDelegate.h"
 #import "CacheArticle.h"
+#import "CRWebViewController.h"
 
 @interface CRHistoryViewController ()
 
@@ -79,13 +80,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     CacheArticle *cacheArticle = [self.historyArray objectAtIndex:indexPath.row];
-    
     cell.textLabel.text = cacheArticle.articleTitle;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    CRWebViewController *webViewController = [[CRWebViewController alloc] initWithNibName:@"CRWebViewController" bundle:[NSBundle mainBundle] chacheArticle:[self.historyArray objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 #pragma end
