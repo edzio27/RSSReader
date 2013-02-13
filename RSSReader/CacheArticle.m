@@ -2,7 +2,7 @@
 //  CacheArticle.m
 //  RSSReader
 //
-//  Created by edzio27 on 12.02.2013.
+//  Created by edzio27 on 13.02.2013.
 //  Copyright (c) 2013 edzio27. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 
 @dynamic articleContent;
 @dynamic articleTitle;
+@dynamic articleToRead;
 @dynamic articleURL;
 @dynamic timeStamp;
-@dynamic articleToRead;
+@dynamic articleWasRead;
 
 @end

@@ -16,7 +16,9 @@
 @interface CRRSSListViewController ()
 
 @property (nonatomic, strong) NSMutableArray *parseResult;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UILabel *refreshDateLabel;
+@property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 
 @end
 
@@ -31,6 +33,13 @@
     return self;
 }
 
+- (UIBarButtonItem *)refreshBarButtonItem {
+    if(_refreshBarButtonItem == nil) {
+        _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshListView)];
+    }
+    return _refreshBarButtonItem;
+}
+
 - (NSMutableArray *)parseResult {
     if(_parseResult == nil) {
         _parseResult = [[NSMutableArray alloc] init];
@@ -38,18 +47,41 @@
     return _parseResult;
 }
 
+- (void)createRefreshDateOnLabel {
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"dd:MM:YYYY HH:mm:ss"];
+    self.refreshDateLabel.text = [dateFormat stringFromDate:date];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     if(!self.isThereInternetConnection) {
         [self.noInternetConnection show];
+    } else {
+        [self createRefreshDateOnLabel];
     }
+}
+
+- (void)refreshListView {
+    if(!self.isThereInternetConnection) {
+        [self.noInternetConnection show];
+    } else {
+        [self loadArticlesContent];
+        [self createRefreshDateOnLabel];
+    }
+}
+
+- (void)loadArticlesContent {
+    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
+    self.parseResult = parser.posts;
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
-    self.parseResult = parser.posts;
+    [self loadArticlesContent];
+    self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
 }
 
 - (void)didReceiveMemoryWarning

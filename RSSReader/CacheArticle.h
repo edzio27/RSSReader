@@ -2,7 +2,7 @@
 //  CacheArticle.h
 //  RSSReader
 //
-//  Created by edzio27 on 12.02.2013.
+//  Created by edzio27 on 13.02.2013.
 //  Copyright (c) 2013 edzio27. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 
 @property (nonatomic, retain) NSString * articleContent;
 @property (nonatomic, retain) NSString * articleTitle;
+@property (nonatomic, retain) NSString * articleToRead;
 @property (nonatomic, retain) NSString * articleURL;
 @property (nonatomic, retain) NSDate * timeStamp;
-@property (nonatomic, retain) NSString * articleToRead;
+@property (nonatomic, retain) NSString * articleWasRead;
 
 @end

@@ -5,9 +5,10 @@
         <attribute name="articleTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleToRead" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleWasRead" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CacheArticle" positionX="-45" positionY="-9" width="128" height="120"/>
+        <element name="CacheArticle" positionX="-45" positionY="-9" width="128" height="135"/>
     </elements>
 </model>

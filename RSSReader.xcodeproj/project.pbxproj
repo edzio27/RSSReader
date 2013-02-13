@@ -24,7 +24,6 @@
 		DB4AFE2116C6E3EC0051F7D7 /* CRRSSListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4AFE1F16C6E3EC0051F7D7 /* CRRSSListViewController.xib */; };
 		DB7C9DBF16CACCA400916E37 /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7C9DBD16CACCA400916E37 /* edit@2x.png */; };
 		DB7C9DC016CACCA400916E37 /* edit_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7C9DBE16CACCA400916E37 /* edit_active@2x.png */; };
-		DB7C9DC316CACD8B00916E37 /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DC216CACD8B00916E37 /* CacheArticle.m */; };
 		DB7C9DC616CAD2F900916E37 /* CRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DC516CAD2F900916E37 /* CRBaseViewController.m */; };
 		DB7C9DCA16CAE12E00916E37 /* CRToReadArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C9DC816CAE12E00916E37 /* CRToReadArticleViewController.m */; };
 		DB7C9DCB16CAE12E00916E37 /* CRToReadArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7C9DC916CAE12E00916E37 /* CRToReadArticleViewController.xib */; };
@@ -38,6 +37,7 @@
 		DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */; };
 		DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB85295216C921B1000ADDB9 /* CoreData.framework */; };
 		DB85296316C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB85296116C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld */; };
+		DB8B9D7C16CC4C7900420127 /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8B9D7B16CC4C7900420127 /* CacheArticle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +65,6 @@
 		DB4AFE1F16C6E3EC0051F7D7 /* CRRSSListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRRSSListViewController.xib; sourceTree = "<group>"; };
 		DB7C9DBD16CACCA400916E37 /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@2x.png"; sourceTree = "<group>"; };
 		DB7C9DBE16CACCA400916E37 /* edit_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_active@2x.png"; sourceTree = "<group>"; };
-		DB7C9DC116CACD8B00916E37 /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
-		DB7C9DC216CACD8B00916E37 /* CacheArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheArticle.m; sourceTree = "<group>"; };
 		DB7C9DC416CAD2F900916E37 /* CRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBaseViewController.h; sourceTree = "<group>"; };
 		DB7C9DC516CAD2F900916E37 /* CRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBaseViewController.m; sourceTree = "<group>"; };
 		DB7C9DC716CAE12E00916E37 /* CRToReadArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToReadArticleViewController.h; sourceTree = "<group>"; };
@@ -86,6 +84,8 @@
 		DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRHistoryViewController.xib; sourceTree = "<group>"; };
 		DB85295216C921B1000ADDB9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB85296216C92BF8000ADDB9 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		DB8B9D7A16CC4C7900420127 /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
+		DB8B9D7B16CC4C7900420127 /* CacheArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheArticle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,9 +221,9 @@
 		DB85295416C92515000ADDB9 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
-				DB7C9DC116CACD8B00916E37 /* CacheArticle.h */,
-				DB7C9DC216CACD8B00916E37 /* CacheArticle.m */,
 				DB85296116C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld */,
+				DB8B9D7A16CC4C7900420127 /* CacheArticle.h */,
+				DB8B9D7B16CC4C7900420127 /* CacheArticle.m */,
 			);
 			name = CoreDataModel;
 			sourceTree = "<group>";
@@ -311,10 +311,10 @@
 				DB7E5F4E16C71B6C009777F2 /* LoadingView.m in Sources */,
 				DB85294C16C91BCC000ADDB9 /* CRHistoryViewController.m in Sources */,
 				DB85296316C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld in Sources */,
-				DB7C9DC316CACD8B00916E37 /* CacheArticle.m in Sources */,
 				DB7C9DC616CAD2F900916E37 /* CRBaseViewController.m in Sources */,
 				DB7C9DCA16CAE12E00916E37 /* CRToReadArticleViewController.m in Sources */,
 				DB7C9DCE16CAEF4C00916E37 /* Reachability.m in Sources */,
+				DB8B9D7C16CC4C7900420127 /* CacheArticle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
