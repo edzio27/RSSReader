@@ -20,19 +20,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "RSSReader/CRWebViewController.m"
-         timestampString = "382399194.486437"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "83"
-         endingLineNumber = "83"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "RSSReader/CRToReadArticleViewController.m"
          timestampString = "382399584.84829"
          startingColumnNumber = "9223372036854775807"
@@ -46,39 +33,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "RSSReader/CRWebViewController.m"
-         timestampString = "382400626.258191"
+         filePath = "RSSReader/CRRSSListViewController.m"
+         timestampString = "382489950.662465"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "RSSReader/CRWebViewController.m"
-         timestampString = "382399933.478147"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
-         landmarkName = "-initWithNibName:bundle:chacheArticle:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "RSSReader/CRWebViewController.m"
-         timestampString = "382400811.708746"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
-         landmarkName = "-alertView:clickedButtonAtIndex:"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
+         landmarkName = "-loadArticlesContent"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

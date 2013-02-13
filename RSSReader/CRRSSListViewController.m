@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *refreshDateLabel;
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, strong) NSMutableArray *newArticlesPost;
 
 @end
 
@@ -31,6 +32,13 @@
         // Custom initialization
     }
     return self;
+}
+
+- (NSMutableArray *)newArticlesPost {
+    if(_newArticlesPost == nil) {
+        _newArticlesPost = [[NSMutableArray alloc] init];
+    }
+    return _newArticlesPost;
 }
 
 - (UIBarButtonItem *)refreshBarButtonItem {
@@ -73,6 +81,12 @@
 
 - (void)loadArticlesContent {
     KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
+    self.newArticlesPost = nil;
+    for(NSObject *post in parser.posts) {
+        if(![self.parseResult containsObject:post]) {
+            [self.newArticlesPost addObject:post];
+        }
+    }
     self.parseResult = parser.posts;
     [self.tableView reloadData];
 }
@@ -80,7 +94,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadArticlesContent];
+    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://kobieta.wp.pl/rss.xml" delegate:nil];
+    self.parseResult = parser.posts;
     self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
 }
 
@@ -112,15 +127,23 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.newArticlesPost.count > indexPath.row) {
+        cell.backgroundColor = [UIColor redColor];
+    } else {
+        CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row - self.newArticlesPost.count inSection:0]]];
+        if(cacheArticle) {
+            //article was read
+            cell.backgroundColor = [UIColor blueColor];
+        }
+        if(!cacheArticle) {
+            cell.backgroundColor = [UIColor yellowColor];
+        }
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSScanner *scanner = [NSScanner scannerWithString:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"]];
-    [scanner scanUpToString:@"?" intoString:nil]; // Scan all characters before #
-    NSInteger right;
-    right = [scanner scanLocation];
-    
-    NSString *url = [[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"] substringWithRange:NSMakeRange(0, right)];
-    url = [url stringByReplacingOccurrencesOfString: @"\n\t\t" withString: @""];
-    
+    NSString *url = [self getUrlAtIndexPath:indexPath];
     CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:url];
     if(!cacheArticle) {
         cacheArticle = [NSEntityDescription
@@ -153,6 +176,16 @@
     NSError *error;
     NSArray *array = [self.managedObjectContext executeFetchRequest:request error:&error];
     return array.count == 0 ? nil : [array objectAtIndex:0];
+}
+
+- (NSString *)getUrlAtIndexPath:(NSIndexPath *)indexPath {
+    NSScanner *scanner = [NSScanner scannerWithString:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"]];
+    [scanner scanUpToString:@"?" intoString:nil]; // Scan all characters before #
+    NSInteger right;
+    right = [scanner scanLocation];
+    NSString *url = [[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"] substringWithRange:NSMakeRange(0, right)];
+    url = [url stringByReplacingOccurrencesOfString: @"\n\t\t" withString: @""];
+    return url;
 }
 
 @end

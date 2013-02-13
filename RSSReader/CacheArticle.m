@@ -16,6 +16,5 @@
 @dynamic articleToRead;
 @dynamic articleURL;
 @dynamic timeStamp;
-@dynamic articleWasRead;
 
 @end

@@ -17,6 +17,5 @@
 @property (nonatomic, retain) NSString * articleToRead;
 @property (nonatomic, retain) NSString * articleURL;
 @property (nonatomic, retain) NSDate * timeStamp;
-@property (nonatomic, retain) NSString * articleWasRead;
 
 @end
