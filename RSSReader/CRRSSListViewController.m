@@ -19,6 +19,8 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *refreshDateLabel;
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
+@property (nonatomic, strong) NSMutableArray *newsArticle;
+@property (nonatomic, weak) IBOutlet UIButton *newsArticleRefreshButton;
 
 @end
 
@@ -31,6 +33,13 @@
         // Custom initialization
     }
     return self;
+}
+
+-(NSMutableArray *)newsArticle {
+    if(_newsArticle == nil) {
+        _newsArticle = [[NSMutableArray alloc] init];
+    }
+    return _newsArticle;
 }
 
 - (UIBarButtonItem *)refreshBarButtonItem {
@@ -60,6 +69,11 @@
     } else {
         [self createRefreshDateOnLabel];
     }
+    [self.tableView reloadData];
+    NSTimer* myTimer = [NSTimer scheduledTimerWithTimeInterval: 10.0 target: self
+                                                      selector: @selector(showArticleAmountToUpdate) userInfo: nil repeats: YES];
+    self.newsArticleRefreshButton.hidden = YES;
+    [self assignNumberOfUnreadArticle];
 }
 
 - (void)refreshListView {
@@ -113,14 +127,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSScanner *scanner = [NSScanner scannerWithString:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"]];
-    [scanner scanUpToString:@"?" intoString:nil]; // Scan all characters before #
-    NSInteger right;
-    right = [scanner scanLocation];
     
-    NSString *url = [[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"] substringWithRange:NSMakeRange(0, right)];
-    url = [url stringByReplacingOccurrencesOfString: @"\n\t\t" withString: @""];
-    
+    NSString *url = [self getUrlAtIndexPath:indexPath];
     CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:url];
     if(!cacheArticle) {
         cacheArticle = [NSEntityDescription
@@ -140,6 +148,43 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:indexPath]];
+    if(cacheArticle) {
+        //article was read
+        cell.backgroundColor = [UIColor blueColor];
+    }
+    if(!cacheArticle) {
+        //article wasnt read
+        cell.backgroundColor = [UIColor yellowColor];
+    }
+}
+
+#pragma end
+
+#pragma mark news article
+
+- (void)showArticleAmountToUpdate {
+    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
+    self.newsArticle = parser.posts;
+    if(self.newsArticle.count > self.parseResult.count) {
+        self.newsArticleRefreshButton.hidden = NO;
+        self.refreshBarButtonItem.title = [NSString stringWithFormat:@"%d new article", self.newsArticle.count > self.parseResult.count];
+    }
+}
+
+- (void)assignNumberOfUnreadArticle {
+    
+    NSInteger badgePath = 0;
+    for(int i = 0; i < self.parseResult.count; i++) {
+        CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]]];
+        if(!cacheArticle) {
+            badgePath++;
+        }
+    }
+    self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", badgePath];
+}
+
 #pragma end
 
 - (CacheArticle *)arrayItemsInCoreDataWithUrl:(NSString *)url {
@@ -153,6 +198,16 @@
     NSError *error;
     NSArray *array = [self.managedObjectContext executeFetchRequest:request error:&error];
     return array.count == 0 ? nil : [array objectAtIndex:0];
+}
+
+- (NSString *)getUrlAtIndexPath:(NSIndexPath *)indexPath {
+    NSScanner *scanner = [NSScanner scannerWithString:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"]];
+    [scanner scanUpToString:@"?" intoString:nil]; // Scan all characters before #
+    NSInteger right;
+    right = [scanner scanLocation];
+    NSString *url = [[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"] substringWithRange:NSMakeRange(0, right)];
+    url = [url stringByReplacingOccurrencesOfString: @"\n\t\t" withString: @""];
+    return url;
 }
 
 @end
