@@ -167,12 +167,21 @@
 #pragma mark news article
 
 - (void)showArticleAmountToUpdate {
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
-    self.newsArticle = parser.posts;
-    if(self.newsArticle.count > self.parseResult.count) {
-        self.newsArticleRefreshButton.hidden = NO;
-        self.refreshBarButtonItem.title = [NSString stringWithFormat:@"%d new article", self.newsArticle.count > self.parseResult.count];
-    }
+    dispatch_queue_t queue = dispatch_queue_create("downloadingArticles", NULL);
+    dispatch_async(queue, ^{
+        
+        KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
+        self.newsArticle = parser.posts;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(self.newsArticle.count > self.parseResult.count) {
+                self.newsArticleRefreshButton.hidden = NO;
+                self.refreshBarButtonItem.title = [NSString stringWithFormat:@"%d new article", self.newsArticle.count > self.parseResult.count];
+            }
+            
+        });
+    });
 }
 
 - (void)assignNumberOfUnreadArticle {
