@@ -138,6 +138,8 @@
         [cacheArticle setValue:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"title"] forKey:@"articleTitle"];
         [cacheArticle setValue:[NSDate date] forKey:@"timeStamp"];
         [cacheArticle setValue:@"" forKey:@"articleContent"];
+        
+        [self decreaseBadgeNumber];
     }
     
     NSError *error;
@@ -183,6 +185,15 @@
         }
     }
     self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", badgePath];
+}
+
+- (void)decreaseBadgeNumber {
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * numberBadge = [formatter numberFromString:self.navigationController.tabBarItem.badgeValue];
+    int intBadgeValue = [numberBadge intValue];
+    intBadgeValue--;
+    self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", intBadgeValue];
 }
 
 #pragma end
