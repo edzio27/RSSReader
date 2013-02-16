@@ -37,6 +37,7 @@
 		DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */; };
 		DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB85295216C921B1000ADDB9 /* CoreData.framework */; };
 		DB85296316C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB85296116C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld */; };
+		DB8735D316D040DA005CEA5B /* CRCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8735D216D040DA005CEA5B /* CRCustomCell.m */; };
 		DB8B9D7C16CC4C7900420127 /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8B9D7B16CC4C7900420127 /* CacheArticle.m */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,8 @@
 		DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRHistoryViewController.xib; sourceTree = "<group>"; };
 		DB85295216C921B1000ADDB9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB85296216C92BF8000ADDB9 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		DB8735D116D040DA005CEA5B /* CRCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCustomCell.h; sourceTree = "<group>"; };
+		DB8735D216D040DA005CEA5B /* CRCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCustomCell.m; sourceTree = "<group>"; };
 		DB8B9D7A16CC4C7900420127 /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
 		DB8B9D7B16CC4C7900420127 /* CacheArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheArticle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +141,7 @@
 		DB4AFDF716C6E2F00051F7D7 /* RSSReader */ = {
 			isa = PBXGroup;
 			children = (
+				DB8735CF16D040B8005CEA5B /* Helpers */,
 				DB7C9DBC16CACCA400916E37 /* Resources */,
 				DB85295416C92515000ADDB9 /* CoreDataModel */,
 				DB4AFE1C16C6E3950051F7D7 /* Views */,
@@ -228,6 +232,15 @@
 			name = CoreDataModel;
 			sourceTree = "<group>";
 		};
+		DB8735CF16D040B8005CEA5B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DB8735D116D040DA005CEA5B /* CRCustomCell.h */,
+				DB8735D216D040DA005CEA5B /* CRCustomCell.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,6 +328,7 @@
 				DB7C9DCA16CAE12E00916E37 /* CRToReadArticleViewController.m in Sources */,
 				DB7C9DCE16CAEF4C00916E37 /* Reachability.m in Sources */,
 				DB8B9D7C16CC4C7900420127 /* CacheArticle.m in Sources */,
+				DB8735D316D040DA005CEA5B /* CRCustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

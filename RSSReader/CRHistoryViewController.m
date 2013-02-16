@@ -11,6 +11,7 @@
 #import "CRAppDelegate.h"
 #import "CacheArticle.h"
 #import "CRWebViewController.h"
+#import "CRCustomCell.h"
 
 @interface CRHistoryViewController ()
 
@@ -74,13 +75,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"Identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    CRHistoryCustomCell *cell = (CRHistoryCustomCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[CRHistoryCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     CacheArticle *cacheArticle = [self.historyArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = cacheArticle.articleTitle;
+    cell.articleTitle.text = cacheArticle.articleTitle;
+    cell.updateTimeStamp.text = [NSString stringWithFormat:@"Last seen at %@", cacheArticle.timeStamp];
     return cell;
 }
 

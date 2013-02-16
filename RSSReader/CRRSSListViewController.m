@@ -12,6 +12,7 @@
 #import "CacheArticle.h"
 #import <CoreData/CoreData.h>
 #import "CRAppDelegate.h"
+#import "CRCustomCell.h"
 
 @interface CRRSSListViewController ()
 
@@ -116,13 +117,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"Identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    CRListViewCustomCell *cell = (CRListViewCustomCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[CRListViewCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    cell.textLabel.text = [[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"title"];
+    CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:indexPath]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.articleTitle.text = [[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"title"];
+    if(cacheArticle) {
+        cell.lastReadTimeStamp.text = [NSString stringWithFormat:@"Last read: %@", cacheArticle.timeStamp];
+        cell.backgroundColor = [UIColor blueColor];
+    } else {
+        cell.lastReadTimeStamp.text = [NSString stringWithFormat:@"Last read: Never"];
+        cell.backgroundColor = [UIColor yellowColor];
+    }
+    
     return cell;
 }
 
@@ -150,16 +161,22 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
+/*
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:indexPath]];
     if(cacheArticle) {
         //article was read
-        cell.backgroundColor = [UIColor blueColor];
+        (CRListViewCustomCell *)cell.backgroundColor = [UIColor blueColor];
     }
     if(!cacheArticle) {
         //article wasnt read
         cell.backgroundColor = [UIColor yellowColor];
     }
+}
+ */
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40.0f;
 }
 
 #pragma end
@@ -177,7 +194,7 @@
             
             if(self.newsArticle.count > self.parseResult.count) {
                 self.newsArticleRefreshButton.hidden = NO;
-                self.refreshBarButtonItem.title = [NSString stringWithFormat:@"%d new article", self.newsArticle.count > self.parseResult.count];
+                self.refreshBarButtonItem.title = [NSString stringWithFormat:@"%d new articles", self.newsArticle.count > self.parseResult.count];
             }
             
         });
