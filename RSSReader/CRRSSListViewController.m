@@ -15,6 +15,8 @@
 #import "CRCustomCell.h"
 #import <QuartzCore/QuartzCore.h>
 
+static NSString *RSS_URL = @"http://www.pcworld.com/index.rss";
+
 @interface CRRSSListViewController ()
 
 @property (nonatomic, strong) NSMutableArray *parseResult;
@@ -22,7 +24,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *refreshDateLabel;
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 @property (nonatomic, strong) NSMutableArray *newsArticle;
-@property (nonatomic, weak) IBOutlet UIButton *newsArticleRefreshButton;
+@property (nonatomic, strong) UIView *headerView;
 
 @end
 
@@ -35,6 +37,19 @@
         // Custom initialization
     }
     return self;
+}
+
+- (UIView *)headerView {
+    if(_headerView == nil) {
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 296, 40)];
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 296, 40)];
+        [button addTarget:self action:@selector(refreshListView) forControlEvents:UIControlEventTouchUpInside];
+        [button setBackgroundColor:[UIColor redColor]];
+        [button setTitle:@"New articles, refresh content!" forState:UIControlStateNormal];
+        [_headerView addSubview:button];
+    }
+    return _headerView;
 }
 
 -(NSMutableArray *)newsArticle {
@@ -74,11 +89,13 @@
     [self.tableView reloadData];
     NSTimer* myTimer = [NSTimer scheduledTimerWithTimeInterval: 10.0 target: self
                                                       selector: @selector(showArticleAmountToUpdate) userInfo: nil repeats: YES];
-    self.newsArticleRefreshButton.hidden = YES;
     [self assignNumberOfUnreadArticle];
+    [self.tableView setTableHeaderView:nil];
+
 }
 
 - (void)refreshListView {
+    [self.tableView setTableHeaderView:nil];
     if(!self.isThereInternetConnection) {
         [self.noInternetConnection show];
     } else {
@@ -88,7 +105,7 @@
 }
 
 - (void)loadArticlesContent {
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://wiadomosci.wp.pl/kat,1329,ver,rss,rss.xml" delegate:nil];
+    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:RSS_URL delegate:nil];
     self.parseResult = parser.posts;
     [self.tableView reloadData];
 }
@@ -97,7 +114,6 @@
 {
     [super viewDidLoad];
     [self loadArticlesContent];
-    //self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
     self.view.backgroundColor = [UIColor colorWithRed:0.294 green:0.553 blue:0.886 alpha:1];
 
     self.tableView.layer.cornerRadius = 3.0;
@@ -174,22 +190,18 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
-/*
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:indexPath]];
-    if(cacheArticle) {
-        //article was read
-        cell.backgroundColor = [UIColor blueColor];
-    }
-    if(!cacheArticle) {
-        //article wasnt read
-        cell.backgroundColor = [UIColor yellowColor];
-    }
-}
- */
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50.0f;
+}
+
+- (void)addTableViewHeaderWithAnimation {
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [self.tableView setTableHeaderView:self.headerView];
+                     }
+                     completion:nil];
 }
 
 #pragma end
@@ -200,16 +212,14 @@
     dispatch_queue_t queue = dispatch_queue_create("downloadingArticles", NULL);
     dispatch_async(queue, ^{
         
-        KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://wiadomosci.wp.pl/kat,1329,ver,rss,rss.xml" delegate:nil];
+        KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:RSS_URL delegate:nil];
         self.newsArticle = parser.posts;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            if(self.newsArticle.count > self.parseResult.count) {
-                self.newsArticleRefreshButton.hidden = NO;
-                self.refreshBarButtonItem.title = [NSString stringWithFormat:@"%d new articles", self.newsArticle.count > self.parseResult.count];
+            if(![self.newsArticle isEqualToArray:self.parseResult]) {
+                [self addTableViewHeaderWithAnimation];
             }
-            
         });
     });
 }
