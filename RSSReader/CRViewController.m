@@ -28,6 +28,8 @@
     [super viewDidLoad];
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
     [self.navigationItem setTitleView:titleView];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:0.294 green:0.553 blue:0.886 alpha:1];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

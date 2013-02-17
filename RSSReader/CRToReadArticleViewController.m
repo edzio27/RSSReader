@@ -9,6 +9,8 @@
 #import "CRToReadArticleViewController.h"
 #import "CacheArticle.h"
 #import "CRWebViewController.h"
+#import "CRCustomCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CRToReadArticleViewController ()
 
@@ -35,6 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.layer.cornerRadius = 3.0;
+    self.tableView.showsHorizontalScrollIndicator = NO;
+    self.tableView.showsVerticalScrollIndicator = NO;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -71,14 +76,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"Identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    CRToReadViewCustomCell *cell = (CRToReadViewCustomCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[CRToReadViewCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
     CacheArticle *cacheArticle = [self.fetchedArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = cacheArticle.articleTitle;
+    cell.articleTitle.text = cacheArticle.articleTitle;
+
     return cell;
 }
 

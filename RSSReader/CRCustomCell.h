@@ -21,3 +21,9 @@
 @property (nonatomic, strong) UILabel *articleTitle;
 
 @end
+
+@interface CRToReadViewCustomCell : UITableViewCell
+
+@property (nonatomic, strong) UILabel *articleTitle;
+
+@end

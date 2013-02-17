@@ -16,7 +16,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LoadingView.h"
 
-static NSString *RSS_URL = @"https://serwisy.gazeta.pl/aliasy/rss_hp/wiadomosci.xml";
+static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
 
 @interface CRRSSListViewController ()
 
@@ -109,7 +109,6 @@ static NSString *RSS_URL = @"https://serwisy.gazeta.pl/aliasy/rss_hp/wiadomosci.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:0.294 green:0.553 blue:0.886 alpha:1];
     self.tableView.layer.cornerRadius = 3.0;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
