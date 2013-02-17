@@ -32,18 +32,21 @@
     
     CRViewController *mainViewController = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:nil];
     mainViewController.title = @"Main";
+    mainViewController.tabBarItem.image = [UIImage imageNamed:@"rss.png"];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [viewControllers addObject:self.navigationController];
     
     CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:nil];
     historyViewController.title = @"History";
+    historyViewController.tabBarItem.image = [UIImage imageNamed:@"clock.png"];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:historyViewController];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [viewControllers addObject:self.navigationController];
     
     CRToReadArticleViewController *toReadArticleViewController = [[CRToReadArticleViewController alloc]initWithNibName:@"CRToReadArticleViewController" bundle:nil];
     toReadArticleViewController.title = @"To read";
+    toReadArticleViewController.tabBarItem.image = [UIImage imageNamed:@"layer.png"];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:toReadArticleViewController];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [viewControllers addObject:self.navigationController];

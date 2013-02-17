@@ -37,6 +37,9 @@
 		DB7EE3D516D0E41300913770 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3D316D0E41300913770 /* arrow@2x.png */; };
 		DB7EE3EE16D0EA1B00913770 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3ED16D0EA1B00913770 /* refresh.png */; };
 		DB7EE3F016D0EE4C00913770 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3EF16D0EE4C00913770 /* logo.png */; };
+		DB80B69E16D19E2A00379C91 /* rss.png in Resources */ = {isa = PBXBuildFile; fileRef = DB80B69D16D19E2A00379C91 /* rss.png */; };
+		DB80B6A116D19E6C00379C91 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DB80B6A016D19E6C00379C91 /* clock.png */; };
+		DB80B6A316D19ECF00379C91 /* layer.png in Resources */ = {isa = PBXBuildFile; fileRef = DB80B6A216D19ECF00379C91 /* layer.png */; };
 		DB85294C16C91BCC000ADDB9 /* CRHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */; };
 		DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */; };
 		DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB85295216C921B1000ADDB9 /* CoreData.framework */; };
@@ -88,6 +91,9 @@
 		DB7EE3D316D0E41300913770 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		DB7EE3ED16D0EA1B00913770 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		DB7EE3EF16D0EE4C00913770 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		DB80B69D16D19E2A00379C91 /* rss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rss.png; sourceTree = "<group>"; };
+		DB80B6A016D19E6C00379C91 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		DB80B6A216D19ECF00379C91 /* layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = layer.png; sourceTree = "<group>"; };
 		DB85294916C91BCC000ADDB9 /* CRHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRHistoryViewController.h; sourceTree = "<group>"; };
 		DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRHistoryViewController.m; sourceTree = "<group>"; };
 		DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRHistoryViewController.xib; sourceTree = "<group>"; };
@@ -224,6 +230,9 @@
 		DB7C9DBC16CACCA400916E37 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DB80B6A216D19ECF00379C91 /* layer.png */,
+				DB80B6A016D19E6C00379C91 /* clock.png */,
+				DB80B69D16D19E2A00379C91 /* rss.png */,
 				DB7EE3EF16D0EE4C00913770 /* logo.png */,
 				DB7EE3ED16D0EA1B00913770 /* refresh.png */,
 				DB7EE3D216D0E41300913770 /* arrow.png */,
@@ -321,6 +330,9 @@
 				DB7EE3D516D0E41300913770 /* arrow@2x.png in Resources */,
 				DB7EE3EE16D0EA1B00913770 /* refresh.png in Resources */,
 				DB7EE3F016D0EE4C00913770 /* logo.png in Resources */,
+				DB80B69E16D19E2A00379C91 /* rss.png in Resources */,
+				DB80B6A116D19E6C00379C91 /* clock.png in Resources */,
+				DB80B6A316D19ECF00379C91 /* layer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
