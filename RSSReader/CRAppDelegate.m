@@ -33,6 +33,7 @@
     CRViewController *mainViewController = [[CRViewController alloc]initWithNibName:@"CRViewController_iPhone" bundle:nil];
     mainViewController.title = @"Main";
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [viewControllers addObject:self.navigationController];
     
     CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:nil];

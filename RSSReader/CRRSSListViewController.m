@@ -98,7 +98,8 @@
     [super viewDidLoad];
     [self loadArticlesContent];
     self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
-    self.view.backgroundColor = [UIColor colorWithRed:0.094 green:0.231 blue:0.553 alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:0.294 green:0.553 blue:0.886 alpha:1];
+
     self.tableView.layer.cornerRadius = 3.0;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -133,10 +134,12 @@
     cell.articleTitle.text = [[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"title"];
     if(cacheArticle) {
         cell.lastReadTimeStamp.text = [NSString stringWithFormat:@"Last read: %@", cacheArticle.timeStamp];
-        cell.backgroundColor = [UIColor blueColor];
+        cell.lastReadTimeStamp.font = [UIFont italicSystemFontOfSize:11.0f];
+        cell.articleTitle.font = [UIFont italicSystemFontOfSize:15.0f];
     } else {
         cell.lastReadTimeStamp.text = [NSString stringWithFormat:@"Last read: Never"];
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.articleTitle.font = [UIFont boldSystemFontOfSize:15.0f];
+        cell.lastReadTimeStamp.font = [UIFont boldSystemFontOfSize:11.0f];
     }
     
     return cell;
@@ -166,6 +169,7 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
+/*
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:indexPath]];
     if(cacheArticle) {
@@ -177,6 +181,7 @@
         cell.backgroundColor = [UIColor yellowColor];
     }
 }
+ */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50.0f;
