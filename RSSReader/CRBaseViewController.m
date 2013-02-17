@@ -47,4 +47,18 @@
     return _managedObjectContext;
 }
 
+- (void)viewDidLoad {
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+    [backButton setImage:[UIImage imageNamed:@"arrow.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(popNavigationControllerFunction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo"]];
+    [self.navigationItem setTitleView:titleView];
+}
+
+- (void)popNavigationControllerFunction {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

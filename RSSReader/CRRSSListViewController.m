@@ -88,7 +88,7 @@
 }
 
 - (void)loadArticlesContent {
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
+    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://wiadomosci.wp.pl/kat,1329,ver,rss,rss.xml" delegate:nil];
     self.parseResult = parser.posts;
     [self.tableView reloadData];
 }
@@ -97,12 +97,17 @@
 {
     [super viewDidLoad];
     [self loadArticlesContent];
-    self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
     self.view.backgroundColor = [UIColor colorWithRed:0.294 green:0.553 blue:0.886 alpha:1];
 
     self.tableView.layer.cornerRadius = 3.0;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
+    
+    UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [refreshButton setImage:[UIImage imageNamed:@"refresh.png"] forState:UIControlStateNormal];
+    [refreshButton addTarget:self action:@selector(refreshListView) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -195,7 +200,7 @@
     dispatch_queue_t queue = dispatch_queue_create("downloadingArticles", NULL);
     dispatch_async(queue, ^{
         
-        KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://www.capgemini.com/ctoblog/feed/" delegate:nil];
+        KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://wiadomosci.wp.pl/kat,1329,ver,rss,rss.xml" delegate:nil];
         self.newsArticle = parser.posts;
         
         dispatch_async(dispatch_get_main_queue(), ^{

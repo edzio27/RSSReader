@@ -55,7 +55,7 @@
 - (UIBarButtonItem *)addToReadbuttonItem {
     if(_addToReadbuttonItem == nil) {
         UIButton *button = [[UIButton alloc] init];
-        button.frame = CGRectMake(0, 0, 30, 30);
+        button.frame = CGRectMake(0, 0, 20, 20);
         [button setBackgroundImage:[UIImage imageNamed: @"edit"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(addToReadArticle) forControlEvents:UIControlEventTouchUpInside];
 
@@ -67,7 +67,7 @@
 - (UIBarButtonItem *)removeToReadbuttonItem {
     if(_removeToReadbuttonItem == nil) {
         UIButton *button = [[UIButton alloc] init];
-        button.frame = CGRectMake(0, 0, 30, 30);
+        button.frame = CGRectMake(0, 0, 20, 20);
         [button setBackgroundImage:[UIImage imageNamed: @"edit_active"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(removetoReadArticle) forControlEvents:UIControlEventTouchUpInside];
         
@@ -98,7 +98,6 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.cacheArticle.articleURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:requestObj];
     self.navigationItem.rightBarButtonItem = [self addItemToRightNavigationController];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
