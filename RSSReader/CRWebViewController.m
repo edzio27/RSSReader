@@ -7,16 +7,16 @@
 //
 
 #import "CRWebViewController.h"
-#import "LoadingView.h"
 #import "CacheArticle.h"
+#import "LoadingView.h"
 
 @interface CRWebViewController ()
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
-@property (nonatomic, strong) LoadingView *loadingView;
 @property (nonatomic, strong) CacheArticle *cacheArticle;
 @property (nonatomic, strong) UIBarButtonItem *addToReadbuttonItem;
 @property (nonatomic, strong) UIBarButtonItem *removeToReadbuttonItem;
+@property (nonatomic, strong) LoadingView *loadingView;
 
 @end
 

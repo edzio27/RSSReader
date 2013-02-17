@@ -14,8 +14,9 @@
 #import "CRAppDelegate.h"
 #import "CRCustomCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LoadingView.h"
 
-static NSString *RSS_URL = @"http://www.pcworld.com/index.rss";
+static NSString *RSS_URL = @"https://serwisy.gazeta.pl/aliasy/rss_hp/wiadomosci.xml";
 
 @interface CRRSSListViewController ()
 
@@ -25,6 +26,7 @@ static NSString *RSS_URL = @"http://www.pcworld.com/index.rss";
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 @property (nonatomic, strong) NSMutableArray *newsArticle;
 @property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong) LoadingView *loadingView;
 
 @end
 
@@ -99,23 +101,15 @@ static NSString *RSS_URL = @"http://www.pcworld.com/index.rss";
     if(!self.isThereInternetConnection) {
         [self.noInternetConnection show];
     } else {
-        [self loadArticlesContent];
+        [self loadFirstViewArticles];
         [self createRefreshDateOnLabel];
     }
-}
-
-- (void)loadArticlesContent {
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:RSS_URL delegate:nil];
-    self.parseResult = parser.posts;
-    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadArticlesContent];
     self.view.backgroundColor = [UIColor colorWithRed:0.294 green:0.553 blue:0.886 alpha:1];
-
     self.tableView.layer.cornerRadius = 3.0;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -124,6 +118,8 @@ static NSString *RSS_URL = @"http://www.pcworld.com/index.rss";
     [refreshButton setImage:[UIImage imageNamed:@"refresh.png"] forState:UIControlStateNormal];
     [refreshButton addTarget:self action:@selector(refreshListView) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    
+    [self loadFirstViewArticles];
 }
 
 - (void)didReceiveMemoryWarning
@@ -176,11 +172,11 @@ static NSString *RSS_URL = @"http://www.pcworld.com/index.rss";
                                        inManagedObjectContext:self.managedObjectContext];
         [cacheArticle setValue:url forKey:@"articleURL"];
         [cacheArticle setValue:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"title"] forKey:@"articleTitle"];
-        [cacheArticle setValue:[NSDate date] forKey:@"timeStamp"];
         [cacheArticle setValue:@"" forKey:@"articleContent"];
-        
+
         [self decreaseBadgeNumber];
     }
+    [cacheArticle setValue:[NSDate date] forKey:@"timeStamp"];
     
     NSError *error;
     if(![self.managedObjectContext save:&error]) {
@@ -219,7 +215,26 @@ static NSString *RSS_URL = @"http://www.pcworld.com/index.rss";
             
             if(![self.newsArticle isEqualToArray:self.parseResult]) {
                 [self addTableViewHeaderWithAnimation];
-            }
+            };
+        });
+    });
+}
+
+- (void)loadFirstViewArticles {
+    self.loadingView = [LoadingView
+                        loadingViewInView:self.view
+                        withTitle:NSLocalizedString(@"Loading...", nil)];
+    
+    dispatch_queue_t queue = dispatch_queue_create("downloadingArticles", NULL);
+    dispatch_async(queue, ^{
+        
+        KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:RSS_URL delegate:nil];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.loadingView removeView];
+            self.parseResult = parser.posts;
+            [self.tableView reloadData];
+            [self assignNumberOfUnreadArticle];
         });
     });
 }
