@@ -35,8 +35,8 @@
 		DB7E5F5016C71C31009777F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7E5F4F16C71C31009777F2 /* QuartzCore.framework */; };
 		DB7EE3D416D0E41300913770 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3D216D0E41300913770 /* arrow.png */; };
 		DB7EE3D516D0E41300913770 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3D316D0E41300913770 /* arrow@2x.png */; };
-		DB7EE3E816D0E5BB00913770 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3E716D0E5BB00913770 /* logo@2x.png */; };
 		DB7EE3EE16D0EA1B00913770 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3ED16D0EA1B00913770 /* refresh.png */; };
+		DB7EE3F016D0EE4C00913770 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7EE3EF16D0EE4C00913770 /* logo.png */; };
 		DB85294C16C91BCC000ADDB9 /* CRHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */; };
 		DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */; };
 		DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB85295216C921B1000ADDB9 /* CoreData.framework */; };
@@ -86,8 +86,8 @@
 		DB7E5F4F16C71C31009777F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DB7EE3D216D0E41300913770 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		DB7EE3D316D0E41300913770 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
-		DB7EE3E716D0E5BB00913770 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		DB7EE3ED16D0EA1B00913770 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		DB7EE3EF16D0EE4C00913770 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		DB85294916C91BCC000ADDB9 /* CRHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRHistoryViewController.h; sourceTree = "<group>"; };
 		DB85294A16C91BCC000ADDB9 /* CRHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRHistoryViewController.m; sourceTree = "<group>"; };
 		DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRHistoryViewController.xib; sourceTree = "<group>"; };
@@ -224,8 +224,8 @@
 		DB7C9DBC16CACCA400916E37 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DB7EE3EF16D0EE4C00913770 /* logo.png */,
 				DB7EE3ED16D0EA1B00913770 /* refresh.png */,
-				DB7EE3E716D0E5BB00913770 /* logo@2x.png */,
 				DB7EE3D216D0E41300913770 /* arrow.png */,
 				DB7EE3D316D0E41300913770 /* arrow@2x.png */,
 				DB7C9DBD16CACCA400916E37 /* edit@2x.png */,
@@ -319,8 +319,8 @@
 				DB7C9DCB16CAE12E00916E37 /* CRToReadArticleViewController.xib in Resources */,
 				DB7EE3D416D0E41300913770 /* arrow.png in Resources */,
 				DB7EE3D516D0E41300913770 /* arrow@2x.png in Resources */,
-				DB7EE3E816D0E5BB00913770 /* logo@2x.png in Resources */,
 				DB7EE3EE16D0EA1B00913770 /* refresh.png in Resources */,
+				DB7EE3F016D0EE4C00913770 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

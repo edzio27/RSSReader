@@ -39,11 +39,13 @@
     CRHistoryViewController *historyViewController = [[CRHistoryViewController alloc]initWithNibName:@"CRHistoryViewController" bundle:nil];
     historyViewController.title = @"History";
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:historyViewController];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [viewControllers addObject:self.navigationController];
     
     CRToReadArticleViewController *toReadArticleViewController = [[CRToReadArticleViewController alloc]initWithNibName:@"CRToReadArticleViewController" bundle:nil];
     toReadArticleViewController.title = @"To read";
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:toReadArticleViewController];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [viewControllers addObject:self.navigationController];
     
     self.tabBarController.viewControllers = viewControllers;
