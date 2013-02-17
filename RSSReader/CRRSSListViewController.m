@@ -13,6 +13,7 @@
 #import <CoreData/CoreData.h>
 #import "CRAppDelegate.h"
 #import "CRCustomCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CRRSSListViewController ()
 
@@ -97,6 +98,10 @@
     [super viewDidLoad];
     [self loadArticlesContent];
     self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
+    self.view.backgroundColor = [UIColor colorWithRed:0.094 green:0.231 blue:0.553 alpha:1];
+    self.tableView.layer.cornerRadius = 3.0;
+    self.tableView.showsHorizontalScrollIndicator = NO;
+    self.tableView.showsVerticalScrollIndicator = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -161,22 +166,20 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
-/*
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     CacheArticle *cacheArticle = [self arrayItemsInCoreDataWithUrl:[self getUrlAtIndexPath:indexPath]];
     if(cacheArticle) {
         //article was read
-        (CRListViewCustomCell *)cell.backgroundColor = [UIColor blueColor];
+        cell.backgroundColor = [UIColor blueColor];
     }
     if(!cacheArticle) {
         //article wasnt read
         cell.backgroundColor = [UIColor yellowColor];
     }
 }
- */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40.0f;
+    return 50.0f;
 }
 
 #pragma end
