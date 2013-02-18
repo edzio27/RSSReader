@@ -11,10 +11,11 @@
 
 #define ALERTVIEW_ERROR_CONNECTION 111
 
-@interface CRBaseViewController : UIViewController <UIAlertViewDelegate>
+@interface CRBaseViewController : UIViewController <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) UIAlertView *noInternetConnection;
+@property (nonatomic, strong) UITableView *tableView;
 
 - (BOOL)isThereInternetConnection;
 

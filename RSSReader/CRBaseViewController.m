@@ -31,6 +31,18 @@
     return internetStatus != NotReachable ? YES : NO;
 }
 
+- (UITableView *)tableView {
+    if(_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(12, 12, 296, [UIScreen mainScreen].bounds.size.height
+                                                                   - self.navigationController.navigationBar.frame.size.height
+                                                                   - self.tabBarController.tabBar.frame.size.height
+                                                                   - 44)];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
+
 - (UIAlertView *)noInternetConnection {
     if(_noInternetConnection == nil) {
         _noInternetConnection = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -48,11 +60,6 @@
 }
 
 - (void)viewDidLoad {
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
-    [backButton setImage:[UIImage imageNamed:@"arrow.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(popNavigationControllerFunction) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
     [self.navigationItem setTitleView:titleView];
     

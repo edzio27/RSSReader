@@ -21,7 +21,6 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
 @interface CRRSSListViewController ()
 
 @property (nonatomic, strong) NSMutableArray *parseResult;
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *refreshDateLabel;
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 @property (nonatomic, strong) NSMutableArray *newsArticle;
@@ -109,6 +108,8 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view addSubview:self.tableView];
     self.tableView.layer.cornerRadius = 3.0;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -117,6 +118,11 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     [refreshButton setImage:[UIImage imageNamed:@"refresh.png"] forState:UIControlStateNormal];
     [refreshButton addTarget:self action:@selector(refreshListView) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+    [backButton setImage:[UIImage imageNamed:@"arrow.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(popNavigationControllerFunction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     [self loadFirstViewArticles];
 }

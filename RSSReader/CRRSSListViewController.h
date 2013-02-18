@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CRBaseViewController.h"
 
-@interface CRRSSListViewController : CRBaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CRRSSListViewController : CRBaseViewController
 
 @end

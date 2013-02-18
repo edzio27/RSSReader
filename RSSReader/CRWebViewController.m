@@ -98,6 +98,11 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.cacheArticle.articleURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:requestObj];
     self.navigationItem.rightBarButtonItem = [self addItemToRightNavigationController];
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+    [backButton setImage:[UIImage imageNamed:@"arrow.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(popNavigationControllerFunction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
 }
 
 - (void)didReceiveMemoryWarning
