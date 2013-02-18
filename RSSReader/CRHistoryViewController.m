@@ -96,6 +96,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CacheArticle *cacheArticle = [self.historyArray objectAtIndex:indexPath.row];
+    [cacheArticle setValue:[NSDate date] forKey:@"timeStamp"];
+    
+    NSError *error;
+    if(![self.managedObjectContext save:&error]) {
+        NSLog(@"Error");
+    }
+    
     CRWebViewController *webViewController = [[CRWebViewController alloc] initWithNibName:@"CRWebViewController" bundle:[NSBundle mainBundle] chacheArticle:[self.historyArray objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:webViewController animated:YES];
 }

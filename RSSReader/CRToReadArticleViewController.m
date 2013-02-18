@@ -91,7 +91,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"object %@", [self.fetchedArray objectAtIndex:indexPath.row]);
+    
+    CacheArticle *cacheArticle = [self.fetchedArray objectAtIndex:indexPath.row];
+    [cacheArticle setValue:[NSDate date] forKey:@"timeStamp"];
+    
+    NSError *error;
+    if(![self.managedObjectContext save:&error]) {
+        NSLog(@"Error");
+    }
+    
     CRWebViewController *webViewController = [[CRWebViewController alloc] initWithNibName:@"CRWebViewController" bundle:nil chacheArticle:[self.fetchedArray objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:webViewController animated:YES];
 }
