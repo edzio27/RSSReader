@@ -26,7 +26,9 @@
     return YES;
 }
 
+/* Create a tab bar controller and put there navigation controller with icon and title */
 - (void)initTabBarController {
+    
     self.tabBarController = [[UITabBarController alloc] init];
     NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
     

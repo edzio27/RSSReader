@@ -30,6 +30,8 @@
     return self;
 }
 
+#pragma mark view methods
+
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
 }
@@ -51,6 +53,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma end
+
+/* Create an array which contain articles that we mark for read */
 - (NSMutableArray *)fetchedArray {
     if(_fetchedArray == nil) {
         _fetchedArray = [[NSMutableArray alloc] init];

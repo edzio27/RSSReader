@@ -40,18 +40,21 @@
     NSLog(@"item %@", self.cacheArticle.articleToRead);
 }
 
+/* Add current article to arleady read article to database */
 - (void)addToReadArticle {
     [self.cacheArticle setValue:@"1" forKey:@"articleToRead"];
     [self saveCurrentContext];
     self.navigationItem.rightBarButtonItem = self.removeToReadbuttonItem;
 }
 
+/* Remove current article form to read article */
 - (void)removetoReadArticle {
     [self.cacheArticle setValue:@"0" forKey:@"articleToRead"];
     [self saveCurrentContext];
     self.navigationItem.rightBarButtonItem = self.addToReadbuttonItem;
 }
 
+/* Create an right item button with check article to read function */
 - (UIBarButtonItem *)addToReadbuttonItem {
     if(_addToReadbuttonItem == nil) {
         UIButton *button = [[UIButton alloc] init];
@@ -64,6 +67,7 @@
     return _addToReadbuttonItem;
 }
 
+/* Create an right item button with uncheck article to read function */
 - (UIBarButtonItem *)removeToReadbuttonItem {
     if(_removeToReadbuttonItem == nil) {
         UIButton *button = [[UIButton alloc] init];
@@ -76,9 +80,12 @@
     return _removeToReadbuttonItem;
 }
 
+/* Decide which right button item should we show in navigationController (read/unread)*/
 - (UIBarButtonItem *)addItemToRightNavigationController {
     return [self.cacheArticle.articleToRead isEqualToString:@"1"] ? self.removeToReadbuttonItem : self.addToReadbuttonItem;
 }
+
+#pragma mark view methods
 
 - (void)viewWillAppear:(BOOL)animated {
     if(!self.isThereInternetConnection) {
@@ -115,6 +122,9 @@
     [self.loadingView removeView];
 }
 
+#pragma end
+
+/* Check sender from alertView and decide what to do */
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(alertView.tag == ALERTVIEW_ERROR_CONNECTION) {
         if(buttonIndex == 0) {

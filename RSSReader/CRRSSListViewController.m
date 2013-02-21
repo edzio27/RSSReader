@@ -40,6 +40,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     return self;
 }
 
+/* Create a view where we inform user about new articles */
 - (UIView *)headerView {
     if(_headerView == nil) {
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 296, 40)];
@@ -53,6 +54,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     return _headerView;
 }
 
+/* Alloc a array with newest article */
 -(NSMutableArray *)newsArticle {
     if(_newsArticle == nil) {
         _newsArticle = [[NSMutableArray alloc] init];
@@ -60,6 +62,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     return _newsArticle;
 }
 
+/* Create a refresh button to load actual articles */
 - (UIBarButtonItem *)refreshBarButtonItem {
     if(_refreshBarButtonItem == nil) {
         _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshListView)];
@@ -67,6 +70,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     return _refreshBarButtonItem;
 }
 
+/* Alloc parse array */
 - (NSMutableArray *)parseResult {
     if(_parseResult == nil) {
         _parseResult = [[NSMutableArray alloc] init];
@@ -74,12 +78,15 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     return _parseResult;
 }
 
+/* Label with last date of refresh content */
 - (void)createRefreshDateOnLabel {
     NSDate *date = [NSDate date];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"dd:MM:YYYY HH:mm:ss"];
     self.refreshDateLabel.text = [dateFormat stringFromDate:date];
 }
+
+#pragma mark view methods
 
 - (void)viewWillAppear:(BOOL)animated {
     if(!self.isThereInternetConnection) {
@@ -93,16 +100,6 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     [self assignNumberOfUnreadArticle];
     [self.tableView setTableHeaderView:nil];
 
-}
-
-- (void)refreshListView {
-    [self.tableView setTableHeaderView:nil];
-    if(!self.isThereInternetConnection) {
-        [self.noInternetConnection show];
-    } else {
-        [self loadFirstViewArticles];
-        [self createRefreshDateOnLabel];
-    }
 }
 
 - (void)viewDidLoad
@@ -131,6 +128,17 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma end
+
+- (void)refreshListView {
+    [self.tableView setTableHeaderView:nil];
+    if(!self.isThereInternetConnection) {
+        [self.noInternetConnection show];
+    } else {
+        [self loadFirstViewArticles];
+        [self createRefreshDateOnLabel];
+    }
 }
 
 #pragma mark tableview delegates
@@ -195,6 +203,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     return 50.0f;
 }
 
+/* Animate while adding a label about unread articles */
 - (void)addTableViewHeaderWithAnimation {
     [UIView animateWithDuration:0.5
                           delay:0.0
@@ -209,6 +218,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
 
 #pragma mark news article
 
+/* Download new articles asynchronously */
 - (void)showArticleAmountToUpdate {
     dispatch_queue_t queue = dispatch_queue_create("downloadingArticles", NULL);
     dispatch_async(queue, ^{
@@ -225,6 +235,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     });
 }
 
+/* Indicator while downloading aricles */
 - (void)loadFirstViewArticles {
     self.loadingView = [LoadingView
                         loadingViewInView:self.view
@@ -244,6 +255,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     });
 }
 
+/* Make a badge about amount of unread articles */
 - (void)assignNumberOfUnreadArticle {
     
     NSInteger badgePath = 0;
@@ -256,6 +268,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", badgePath];
 }
 
+/* Decrease amount of unread articles */
 - (void)decreaseBadgeNumber {
     NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -267,6 +280,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
 
 #pragma end
 
+/* Method which return a bool value about read/unread articles */
 - (CacheArticle *)arrayItemsInCoreDataWithUrl:(NSString *)url {
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -280,6 +294,7 @@ static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
     return array.count == 0 ? nil : [array objectAtIndex:0];
 }
 
+/* Method which we use to get a url from article */
 - (NSString *)getUrlAtIndexPath:(NSIndexPath *)indexPath {
     NSScanner *scanner = [NSScanner scannerWithString:[[self.parseResult objectAtIndex:indexPath.row] objectForKey:@"link"]];
     [scanner scanUpToString:@"?" intoString:nil]; // Scan all characters before #

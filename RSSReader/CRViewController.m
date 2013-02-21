@@ -17,6 +17,7 @@
 
 @implementation CRViewController
 
+/* Button to load newest article */
 - (IBAction)press:(id)sender {
     CRRSSListViewController *list = [[CRRSSListViewController alloc] init];
     [self.navigationController pushViewController:list animated:YES];

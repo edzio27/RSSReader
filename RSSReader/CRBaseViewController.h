@@ -4,6 +4,7 @@
 //
 //  Created by edzio27 on 12.02.2013.
 //  Copyright (c) 2013 edzio27. All rights reserved.
+//  This is the base view controller than we use to inheritance to another controllers.
 //
 
 #import <UIKit/UIKit.h>

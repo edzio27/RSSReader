@@ -24,6 +24,7 @@
     return self;
 }
 
+/* Check is there a internet connection */
 - (BOOL)isThereInternetConnection {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus internetStatus = [reachability currentReachabilityStatus];
@@ -31,6 +32,7 @@
     return internetStatus != NotReachable ? YES : NO;
 }
 
+/* Create a tableView which we fit to the iphone screen (iphone4/iphone5) */
 - (UITableView *)tableView {
     if(_tableView == nil) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(12, 12, 296, [UIScreen mainScreen].bounds.size.height
@@ -43,6 +45,7 @@
     return _tableView;
 }
 
+/* AlertView to show user about connection problem */
 - (UIAlertView *)noInternetConnection {
     if(_noInternetConnection == nil) {
         _noInternetConnection = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

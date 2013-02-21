@@ -4,6 +4,7 @@
 //
 //  Created by edzio27 on 10.02.2013.
 //  Copyright (c) 2013 edzio27. All rights reserved.
+//  This viewController is used to show webview of current article, it inherit methods from CRBaseViewController.
 //
 
 #import <UIKit/UIKit.h>

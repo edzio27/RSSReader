@@ -32,6 +32,8 @@
     return self;
 }
 
+#pragma mark view methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -54,6 +56,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma end
+
+/* Create an array which contain recently read article and sort it by last read time */
 - (NSMutableArray *)historyArray {
     if(_historyArray == nil) {
         _historyArray = [[NSMutableArray alloc] init];
