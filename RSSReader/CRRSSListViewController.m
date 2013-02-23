@@ -16,6 +16,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LoadingView.h"
 
+/* RSS url for downloading data */
 static NSString *RSS_URL = @"http://www.pl.capgemini-sdm.com/feed.rss";
 
 @interface CRRSSListViewController ()

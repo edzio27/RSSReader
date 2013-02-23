@@ -48,6 +48,8 @@
 		DB85294D16C91BCC000ADDB9 /* CRHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */; };
 		DB85295316C921B1000ADDB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB85295216C921B1000ADDB9 /* CoreData.framework */; };
 		DB85296316C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB85296116C92BF8000ADDB9 /* CoreDataModel.xcdatamodeld */; };
+		DB85BD3116D8E0FE003E10A8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = DB85BD3016D8E0FE003E10A8 /* edit.png */; };
+		DB85BD4316D8E18D003E10A8 /* edit_active.png in Resources */ = {isa = PBXBuildFile; fileRef = DB85BD4216D8E18D003E10A8 /* edit_active.png */; };
 		DB8735D316D040DA005CEA5B /* CRCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8735D216D040DA005CEA5B /* CRCustomCell.m */; };
 		DB8B9D7C16CC4C7900420127 /* CacheArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8B9D7B16CC4C7900420127 /* CacheArticle.m */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,8 @@
 		DB85294B16C91BCC000ADDB9 /* CRHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRHistoryViewController.xib; sourceTree = "<group>"; };
 		DB85295216C921B1000ADDB9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB85296216C92BF8000ADDB9 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		DB85BD3016D8E0FE003E10A8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		DB85BD4216D8E18D003E10A8 /* edit_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_active.png; sourceTree = "<group>"; };
 		DB8735D116D040DA005CEA5B /* CRCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCustomCell.h; sourceTree = "<group>"; };
 		DB8735D216D040DA005CEA5B /* CRCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCustomCell.m; sourceTree = "<group>"; };
 		DB8B9D7A16CC4C7900420127 /* CacheArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheArticle.h; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 		DB837F9416D2C781002EB822 /* x1 */ = {
 			isa = PBXGroup;
 			children = (
+				DB85BD4216D8E18D003E10A8 /* edit_active.png */,
+				DB85BD3016D8E0FE003E10A8 /* edit.png */,
 				DB837F9C16D2CA8A002EB822 /* logo.png */,
 				DB837F9A16D2C7E8002EB822 /* rss.png */,
 				DB837F9816D2C7E0002EB822 /* photos_polaroid.png */,
@@ -373,6 +379,8 @@
 				DB837F9916D2C7E0002EB822 /* photos_polaroid.png in Resources */,
 				DB837F9B16D2C7E8002EB822 /* rss.png in Resources */,
 				DB837F9D16D2CA8A002EB822 /* logo.png in Resources */,
+				DB85BD3116D8E0FE003E10A8 /* edit.png in Resources */,
+				DB85BD4316D8E18D003E10A8 /* edit_active.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
